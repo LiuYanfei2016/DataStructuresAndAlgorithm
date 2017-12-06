@@ -11,7 +11,7 @@ long fib(int n)
     else
         return fib(n-1) + fib(n -2);
 }
-/*************最大子序列*************
+/*************最大子序列**************/
 int maxSubSum1(const vector<int> &a)
 {
     int maxSum = 0;
@@ -76,7 +76,7 @@ int maxSubSum3(const vector<int> &a, int left, int right)
 
 
 }
-*/
+
 int main()
 {
     //cout << fib(10);
