@@ -11,7 +11,7 @@ long fib(int n)
     else
         return fib(n-1) + fib(n -2);
 }
-
+/*************最大子序列*************
 int maxSubSum1(const vector<int> &a)
 {
     int maxSum = 0;
@@ -59,7 +59,7 @@ int maxSubSum3(const vector<int> &a, int left, int right)
     int maxRightSum = maxSubSum3(a, center + 1, right);
 
     int maxLeftBorderSum = 0, leftBorderSum = 0;
-    for (int i = center; i >= left; i--)
+    for (int i = center; i >= left; i--) // 这里很奇怪， 换成i++就不行了？？？？
     {
         leftBorderSum += a[i];
         maxLeftBorderSum = maxLeftBorderSum > leftBorderSum ? maxLeftBorderSum : leftBorderSum;
@@ -76,6 +76,7 @@ int maxSubSum3(const vector<int> &a, int left, int right)
 
 
 }
+*/
 int main()
 {
     //cout << fib(10);
