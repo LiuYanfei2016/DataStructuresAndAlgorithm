@@ -76,6 +76,61 @@ int maxSubSum3(const vector<int> &a, int left, int right)
 
 
 }
+//简单 但又牛逼的想法啊....
+int maxSubSum4(const vector<int> &a)
+{
+    int maxSum = 0, thisSum = 0;
+
+    for (int j = 0; j < a.size(); j ++)
+    {
+        //一直在累加
+        thisSum += a[j];
+        //每次判断取其最大值
+        maxSum = thisSum > maxSum ? thisSum : maxSum;
+        //如果小于零了，就从下一个位置 重新开始累加
+        if (thisSum < 0)
+            thisSum = 0;
+    }
+    return maxSum;
+}
+//排序，冒泡吧
+void swap(int &i, int &j);
+void swap(int &i, int &j)
+{
+    i = i + j;
+    j = i - j;
+    i = i - j;
+}
+
+void easySort(vector<int> &a)
+{
+    for (int i = 1; i < a.size(); i++)
+    {
+        for (int j = 0; j < a.size() - i; j++)
+        {
+            if (a[j] > a[j+1])
+            {
+                swap(a[j], a[j + 1]);
+            }
+        }
+    }
+}
+
+//二分查找 递归, 所有递归都可以用while循环实现？
+int findItem(const vector<int> &a, int item, int left, int right)
+{
+    int mid = (left + right)/2;
+    //防止 进入无线递归
+    if (left == right && a[left] != item)
+        return -1;
+    //cout << a[mid] << endl;
+    if (a[mid] > item)
+        findItem(a, item, left, mid);
+    else if (a[mid] < item)
+        findItem(a, item, mid, right);
+    else if (a[mid] == item)
+        return mid;
+}
 
 int main()
 {
@@ -84,5 +139,32 @@ int main()
     vector<int> a{1, -2, 3, 6, -1, 5, -5, 3};
     //cout << maxSubSum1(a);
     //cout << maxSubSum2(a);
-    cout << maxSubSum3(a, 0, a.size() - 1);
+    //cout << maxSubSum3(a, 0, a.size() - 1);
+    //cout << maxSubSum4(a);
+    easySort(a);
+    for (auto i : a)
+        cout << i << " ";
+    cout << endl;
+    cout << findItem(a, -9, 0, a.size()-1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
